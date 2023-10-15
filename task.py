@@ -54,14 +54,26 @@ def save_tasks(filename):
     print(f"Tasks saved to '{filename}'.")
 
 # Function to load tasks from a file
+# def load_tasks(filename):
+#     if os.path.exists(filename):
+#         with open(filename, 'rb') as file:
+#             loaded_tasks = pickle.load(file)
+#         tasks.extend(loaded_tasks)
+#         print(f"Tasks loaded from '{filename}'.")
+#     else:
+#         print(f"'{filename}' does not exist. No tasks loaded.")
+
 def load_tasks(filename):
-    if os.path.exists(filename):
-        with open(filename, 'rb') as file:
-            loaded_tasks = pickle.load(file)
-        tasks.extend(loaded_tasks)
-        print(f"Tasks loaded from '{filename}'.")
-    else:
-        print(f"'{filename}' does not exist. No tasks loaded.")
+    try:
+        if os.path.exists(filename):
+            with open(filename, 'rb') as file:
+                loaded_tasks = pickle.load(file)
+            tasks.extend(loaded_tasks)
+            print(f"Tasks loaded from '{filename}'.")
+        else:
+            print(f"'{filename}' does not exist. No tasks loaded.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 
 
